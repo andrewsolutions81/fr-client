@@ -1,14 +1,24 @@
 import React from 'react';
 import './App.css';
-import Home from './pages/Home/Home';
+import {
+  Routes,
+  Route,
+} from "react-router-dom";
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+import Home from './pages/Home/Home';
+import Contact from './pages/Contact/Contact';
+import NotFound from './components/NotFound/NotFound';
 
 function App() {
   return (
     <div className="App">
       <Header />
-        <Home />
+      <Routes>
+        <Route path="*" element={<NotFound />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
       <Footer />
     </div>
   );
