@@ -3,7 +3,7 @@ import "./Footer.styles.scss"
 
 const Footer = () => {
   return (
-    <footer className="Footer">
+    <footer className="footer">
       <span className="footer__span">Alvaro Berrio inmobiliaria</span>
     </footer>
   )

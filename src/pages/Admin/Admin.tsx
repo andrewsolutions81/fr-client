@@ -2,7 +2,7 @@ import React from 'react'
 
 function Admin() {
   return (
-    <section className="Admin">
+    <section className="admin">
       <h1>admin page</h1>
     </section>
   )

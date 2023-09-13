@@ -1,16 +1,9 @@
 import React from "react";
+import "./NavBar.scss"
 
 const Navbar = () => {
   return (
-    <nav className="NavBar">
-      <ul>
-        <li>NavBar</li>
-        <li>NavBar</li>
-        <li>NavBar</li>
-        <li>NavBar</li>
-        <li>NavBar</li>
-      </ul>
-    </nav>
+<h1 className="fakenav">nav bar</h1>
   );
 };
 
