@@ -12,20 +12,30 @@ const Header = () => {
         <img
           className="header__logo"
           src={buildingLogo}
-          alt="finca raiz logo"
+          alt="finca raiz building logo"
+          loading="lazy"
         />
-        <h1 className="header__title">Inmobiliaria Santa Barvara </h1>
+        <h1 className="header__title">Inmobiliaria Santa Barbara </h1>
       </main>
       <section className="header__navbar_container">
-      <span className="material-icons">account_box</span>
-        <span className="header__ingresar">ingresar</span>
-        <nav className="navbar">
-          <ul className="navbar__ul">
-            <li className="navbar__item navbar__item--contacto">Contacto</li>
-            <li className="navbar__item navbar__item--favoritos">Favoritos</li>
-            <li className="navbar__item navbar__item--usuario">Usuario</li>
-          </ul>
-        </nav>
+        <div className="header__ingresar">
+          <span className="material-icons">account_box</span>
+          <h3 className="header__ingresar--text">Ingresar</h3>
+          <span className="material-icons">expand_more</span>
+          <span className="material-icons">expand_less</span>
+        </div>
+        <div className="header__navbar">
+          {/* <nav className="navbar">
+            <ul className="navbar__ul">
+              <li className="navbar__item navbar__item--favoritos">
+                Favoritos
+              </li>
+              <li className="navbar__item navbar__item--usuario">Usuario</li>
+              <li className="navbar__item navbar__item--contacto">Contacto</li>
+              <li className="navbar__item navbar__item--usuario">Log Out</li>
+            </ul>
+          </nav> */}
+        </div>
       </section>
     </header>
   );
