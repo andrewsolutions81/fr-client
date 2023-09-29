@@ -1,0 +1,15 @@
+.signup{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+
+@media (min-width: 960px) {
+  .signup__img {
+    display: inline;
+    height: 90vh;
+    width: 50%;
+    background-color: beige;
+  }
+}
