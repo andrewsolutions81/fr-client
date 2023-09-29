@@ -1,5 +1,9 @@
 html { scroll-behavior: smooth;}
 
+:root {
+  --desktop-width: 960px;
+}
+
 * {
   margin: 0;
   padding: 0;

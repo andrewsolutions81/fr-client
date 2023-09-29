@@ -1,10 +1,13 @@
 import React from 'react'
+import "./SignUp.style.scss"
+import SignupForm from '../../components/SignupForm'
 
 const SignUp = () => {
   return (
-    <div className="signup">
-      <h1 className="signup__title">sign Up</h1>
-    </div>
+    <section className="signup">
+      <div className="signup__img" />
+      <SignupForm />
+    </section>
   )
 }
 

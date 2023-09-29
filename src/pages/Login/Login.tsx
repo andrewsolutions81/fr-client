@@ -1,10 +1,13 @@
 import React from 'react'
+import "./Login.style.scss"
+import LoginForm from '../../components/LoginForm/LoginForm'
 
 const Login = () => {
   return (
-    <div className="login">
-      <h1 className="login__title">Login</h1>
-    </div>
+    <section className="login">
+      <div className="login__img">login</div>
+      <LoginForm />
+    </section>
   )
 }
 
