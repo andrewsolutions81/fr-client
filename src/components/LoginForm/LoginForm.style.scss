@@ -1,6 +1,41 @@
 .loginform {
   height: 66vh;
   width: 66vw;
-  background-color: red;
   margin-top: 5vh;
+  text-align: left;
+  padding: 0 1.5vw 0 1.5vw;
+}
+
+.loginform__iniciarsesion {
+  padding-top: 34px;
+  margin-bottom: 2vh;
+}
+
+.loginform__input {
+  width: 100%;
+  border: 1px solid #b4c9e8;
+  padding: 0 16px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  height: 8vh;
+  font-size: 1.5rem;
+}
+
+.loginform_error {
+  color: red;
+  margin-left: 1vw;
+}
+
+.loginform__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1vw;
+}
+
+.signupform__btn {
+  background-color: rgb(187, 180, 120);
+  border-radius: 6px;
+  height: 3em;
+  width: 9em;
 }
