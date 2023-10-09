@@ -37,3 +37,11 @@ export interface HomesResponse {
   message: string;
   data: Home[];
 }
+
+export type signupInput = {
+  username: string,
+  email: string;
+  password: string;
+  phone_number: string;
+  passwordCheck?:string;
+}

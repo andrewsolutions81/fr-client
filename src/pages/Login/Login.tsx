@@ -5,7 +5,7 @@ import LoginForm from '../../components/LoginForm/LoginForm'
 const Login = () => {
   return (
     <section className="login">
-      <div className="login__img">login</div>
+      <div className="login__img">replase with image</div>
       <LoginForm />
     </section>
   )
