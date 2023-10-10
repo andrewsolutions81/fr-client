@@ -1,6 +1,7 @@
 import React,{ ChangeEvent, FormEvent, useState }from "react";
 import "./SignupForm.style.scss"
 import { signupInput } from "../../types"
+import { apiSignup } from "../../api/apiSignup";
 
 const SignupForm = () => {
   const signupInitialState :signupInput =
@@ -33,10 +34,10 @@ const SignupForm = () => {
     }
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     delete signupInput.passwordCheck
-    console.log(signupInput)
+    apiSignup(signupInput)
   };
 
   return (

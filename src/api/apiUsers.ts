@@ -1,185 +1,24 @@
-export const fetchUsers = async () => {
-  return new Promise<{ message: string; data: any[] }>((resolve) => {
-    setTimeout(() => {
-      resolve({
-        message: "✅ All users found:",
-        data: [
-          {
-            id: "clletyypt0000ugwcrxozml9p",
-            username: "Sergio",
-            email: "2email@example.com",
-            phone_number: 313123456,
-            is_admin: false,
-            favorite_homes: [
-              {
-                id: "cllckwaeg0000ug4oz7ju09f8",
-                title: "home title example",
-              },
-              {
-                id: "cllcp8wiy0001ugdu2dbpevs5",
-                title: " third home title example",
-              },
-              {
-                id: "cllcve5030000ug8wacq8uj03",
-                title: " fourth home title example",
-              },
-            ],
-            createdAt: "2023-08-17T07:19:01.685Z",
-            updatedAt: "2023-08-17T07:19:01.685Z",
-          },
-          {
-            id: "clleucyry0001ugr2gb9yploi",
-            username: "juan",
-            email: "3email@example.com",
-            phone_number: 313123456,
-            is_admin: false,
-            favorite_homes: [
-              {
-                id: "cllckwaeg0000ug4oz7ju09f8",
-                title: "home title example",
-              },
-              {
-                id: "cllcp8wiy0001ugdu2dbpevs5",
-                title: " third home title example",
-              },
-              {
-                id: "cllcve5030000ug8wacq8uj03",
-                title: " fourth home title example",
-              },
-            ],
-            createdAt: "2023-08-17T07:29:54.946Z",
-            updatedAt: "2023-08-17T07:29:54.946Z",
-          },
-          {
-            id: "cllevunhu0000ugisyex2ujx4",
-            username: "new schema",
-            email: "4email@example.com",
-            phone_number: 313123456,
-            is_admin: false,
-            favorite_homes: [
-              {
-                id: "cllckwaeg0000ug4oz7ju09f8",
-                title: "home title example",
-              },
-              {
-                id: "cllcp8wiy0001ugdu2dbpevs5",
-                title: " third home title example",
-              },
-              {
-                id: "cllcve5030000ug8wacq8uj03",
-                title: " fourth home title example",
-              },
-            ],
-            createdAt: "2023-08-17T08:11:39.750Z",
-            updatedAt: "2023-08-17T08:11:39.750Z",
-          },
-          {
-            id: "cllnuggiz0000ugqpmvr8j2cf",
-            username: "bcrypt",
-            email: "5email@example.com",
-            phone_number: 313123456,
-            is_admin: false,
-            favorite_homes: [],
-            createdAt: "2023-08-23T14:42:33.487Z",
-            updatedAt: "2023-08-23T14:42:33.487Z",
-          },
-          {
-            id: "cllo276zs0001uggikd5p4rkw",
-            username: "regular create",
-            email: "6email@example.com",
-            phone_number: 313123456,
-            is_admin: false,
-            favorite_homes: [],
-            createdAt: "2023-08-23T18:19:18.183Z",
-            updatedAt: "2023-08-23T18:19:18.183Z",
-          },
-          {
-            id: "cllo2l5j20000ug208fuwkgys",
-            username: "signup routes import changed",
-            email: "email@example.com",
-            phone_number: 313123456,
-            is_admin: false,
-            favorite_homes: [],
-            createdAt: "2023-08-23T18:30:09.470Z",
-            updatedAt: "2023-08-23T18:30:09.470Z",
-          },
-          {
-            id: "cllo2s39s0001ugg3eboyt15p",
-            username: "signup routes import changed",
-            email: "8email@example.com",
-            phone_number: 313123456,
-            is_admin: false,
-            favorite_homes: [],
-            createdAt: "2023-08-23T18:35:33.136Z",
-            updatedAt: "2023-08-23T18:35:33.136Z",
-          },
-          {
-            id: "cllo2ti1q0000ugjz540sb2av",
-            username: "signup routes import changed",
-            email: "9email@example.com",
-            phone_number: 313123456,
-            is_admin: false,
-            favorite_homes: [],
-            createdAt: "2023-08-23T18:36:38.942Z",
-            updatedAt: "2023-08-23T18:36:38.942Z",
-          },
-          {
-            id: "cllo2udxk0000ugln8dxuwvxh",
-            username: "signup routes import changed",
-            email: "10email@example.com",
-            phone_number: 313123456,
-            is_admin: false,
-            favorite_homes: [],
-            createdAt: "2023-08-23T18:37:20.265Z",
-            updatedAt: "2023-08-23T18:37:20.265Z",
-          },
-          {
-            id: "cllo2xr2e0000ugsx5nb9ze77",
-            username: "signup routes import changed",
-            email: "11email@example.com",
-            phone_number: 313123456,
-            is_admin: false,
-            favorite_homes: [],
-            createdAt: "2023-08-23T18:39:57.254Z",
-            updatedAt: "2023-08-23T18:39:57.254Z",
-          },
-          {
-            id: "cllo32pg70001ugxdgblh5wfb",
-            username: "login user 123",
-            email: "123@test",
-            phone_number: 313123456,
-            is_admin: false,
-            favorite_homes: [],
-            createdAt: "2023-08-23T18:43:48.427Z",
-            updatedAt: "2023-08-23T18:43:48.427Z",
-          },
-          {
-            id: "cllcviwbx0001ugi5uqde184f",
-            username: " Martin Diaz ",
-            email: "1email@example.com",
-            phone_number: 313123456,
-            is_admin: false,
-            favorite_homes: [
-              {
-                id: "cllckwaeg0000ug4oz7ju09f8",
-                title: "home title example",
-              },
-            ],
-            createdAt: "2023-08-15T22:26:58.989Z",
-            updatedAt: "2023-08-23T21:52:20.641Z",
-          },
-          {
-            id: "cllo3yz110000ugjg8yoliwee",
-            username: "login user 123 ",
-            email: "123@test.com",
-            phone_number: 313123456,
-            is_admin: false,
-            favorite_homes: [],
-            createdAt: "2023-08-23T19:08:53.843Z",
-            updatedAt: "2023-08-29T12:26:46.218Z",
-          },
-        ],
-      });
-    }, 1000); // 1000 milliseconds (1 second) delay
-  });
+import BASE_URL from "../services/apiConfig";
+
+export const apiUsers = async () => {
+  try {
+    const requestOptions = {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    };
+    const response = await fetch(
+      `${BASE_URL}/api/users/`,
+      requestOptions
+    );
+    if (!response.ok) {
+      return new Error(`❌ apiUsers response.status: ${response.status}`);
+    }
+
+    const res = await response.json();
+    console.log("res in apiUsers: ",res);
+    return res
+  } catch (error:any) {
+    console.error("❌ apiUsers error :", error);
+    return new Error(error);
+  }
 };
