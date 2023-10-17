@@ -1,20 +1,31 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
-import "./LoginForm.style.scss"
+import "./LoginForm.style.scss";
+import { apiLogin } from "../../api/apiAuth";
+import { isTokenStored } from "../../services/loggedUserService";
 
 const LoginForm: React.FC = () => {
   const [loginInput, setloginInput] = useState({ email: "", password: "" });
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setloginInput({ ...loginInput, [name]: value });
+
+    const isValidEmail = (email: string) => {
+      const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      return emailPattern.test(email);
+    };
+    if (name === "email" && !isValidEmail(value)) {
+      setErrorMessage("Ingresar con un correo valido");
+    } else {
+      setErrorMessage("");
+    }
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit =  (e: FormEvent) => {
     e.preventDefault();
-    console.log(loginInput);
+    apiLogin(loginInput)
   };
-
-  const errorMessage: string = " Error de credenciales"
 
   return (
     <div className="loginform">
@@ -42,10 +53,11 @@ const LoginForm: React.FC = () => {
           <a className="loginform__login" href="google.com">
             Sign up
           </a>
-          <button className="loginform__btn" type="submit">Ingresar</button>
+          <button className="loginform__btn" type="submit">
+            Ingresar
+          </button>
         </div>
       </form>
-
     </div>
   );
 };

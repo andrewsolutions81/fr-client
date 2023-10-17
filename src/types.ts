@@ -39,9 +39,14 @@ export interface HomesResponse {
 }
 
 export type signupInput = {
-  username: string,
+  username: string;
   email: string;
   password: string;
   phone_number: string;
-  passwordCheck?:string;
-}
+  passwordCheck?: string;
+};
+
+export type loginInput = {
+  email: string;
+  password: string;
+};

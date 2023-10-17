@@ -1,7 +1,7 @@
 import React,{ ChangeEvent, FormEvent, useState }from "react";
 import "./SignupForm.style.scss"
 import { signupInput } from "../../types"
-import { apiSignup } from "../../api/apiSignup";
+import { apiSignup } from "../../api/apiAuth";
 
 const SignupForm = () => {
   const signupInitialState :signupInput =
