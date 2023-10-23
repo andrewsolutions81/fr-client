@@ -8,14 +8,19 @@
   position: sticky;
   top: 0;
   z-index: 1;
-  background-color: white;
+  background-color: var(--background-light);
+  color: var(--text-light);
 }
 
 .header__burger {
   cursor: pointer;
 }
 
-.header__burger:hover {
+.header__brand {
+  cursor: pointer;
+}
+
+.header__brand :hoover {
   background-color: azure;
 }
 
@@ -76,6 +81,13 @@
     top: 101%;
     right: 4%;
     left: auto;
-    background-color: blue;
+  }
+
+  .header__ingresar--btn {
+    cursor: pointer;
+  }
+
+  .header__ingresar--btn :hoover {
+    background-color: azure;
   }
 }

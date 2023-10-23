@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./Homes.style.scss"
+import "./Homes.style.scss";
 import Loading from "../Loading/Loading";
 import HomeCard from "../HomeCard/HomeCard";
 import { fetchHomes } from "../../api/apiHomes";
@@ -15,7 +15,7 @@ const Homes: React.FC = () => {
         setHomesData(data);
         setLoading(false);
       })
-      .catch((error) => {
+      .catch((error: any) => {
         console.error("Error fetching homes:", error);
         setLoading(false);
       });
@@ -34,7 +34,21 @@ const Homes: React.FC = () => {
             price={home.price}
             area={home.area}
             title={home.title}
-            neighborhood={home.neighborhood} id={""} description={""} address={""} notes={""} floor={0} rooms={0} bathrooms={0} storage={0} antiquity={0} parking_spots={0} favorite_users={[]} createdAt={""} updatedAt={""}          />
+            neighborhood={home.neighborhood}
+            id={""}
+            description={""}
+            address={""}
+            notes={""}
+            floor={0}
+            rooms={0}
+            bathrooms={0}
+            storage={0}
+            antiquity={0}
+            parking_spots={0}
+            favorite_users={[]}
+            createdAt={""}
+            updatedAt={""}
+          />
         ))
       ) : (
         <span className="error-message">No Hay casas para mostrar</span>

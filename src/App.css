@@ -2,6 +2,10 @@ html { scroll-behavior: smooth;}
 
 :root {
   --desktop-width: 960px;
+  --background-light: #fff;
+  --text-light: #000;
+  --background-dark: #333;
+  --text-dark: #fff;
 }
 
 * {
@@ -15,4 +19,16 @@ html { scroll-behavior: smooth;}
   flex-direction: column;
   min-height: 100vh;
   text-align: center;
+}
+
+/* Default to light theme */
+body {
+  background-color: var(--background-light);
+  color: var(--text-light);
+}
+
+/* Adjust for dark theme */
+body.dark-theme {
+  background-color: var(--background-dark);
+  color: var(--text-dark);
 }
