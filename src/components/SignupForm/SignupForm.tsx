@@ -43,7 +43,7 @@ const SignupForm = () => {
   return (
     <div className="signupform">
       <form action="" className="signupform__form" onSubmit={handleSubmit}>
-        <h1 className="signupform__title">Santa Barbara Inmobiliaria</h1>
+        <h2 className="signupform__title">Santa Barbara Inmobiliaria</h2>
         <h2 className="signupform__crearcuenta">Crear una cuenta</h2>
         <div className="signupform__inputs--container">
           <input
