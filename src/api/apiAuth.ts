@@ -1,6 +1,6 @@
 import { signupInput , loginInput} from "../types";
 import BASE_URL from "../services/apiConfig";
-import { isTokenStored } from "../services/loggedUserService";
+import { isLogged } from "../services/loggedUserService";
 
 
 
@@ -51,7 +51,7 @@ export const apiLogin = async (user: loginInput) => {
     if (data.token) {
       document.cookie = `token=${data.token}; path=/; secure; HttpOnly; SameSite=Strict`;
     }
-    if(!isTokenStored){
+    if(!isLogged){
       console.error("❌ apiLogin error, no cookie token stored.");
     }
 

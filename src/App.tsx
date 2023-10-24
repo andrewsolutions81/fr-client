@@ -29,7 +29,7 @@ function App() {
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/admin" element={<Admin />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

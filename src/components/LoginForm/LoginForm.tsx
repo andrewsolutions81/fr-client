@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import "./LoginForm.style.scss";
 import { apiLogin } from "../../api/apiAuth";
-import { isTokenStored } from "../../services/loggedUserService";
+// import { isLogged } from "../../services/loggedUserService";
 
 const LoginForm: React.FC = () => {
   const [loginInput, setloginInput] = useState({ email: "", password: "" });

@@ -50,3 +50,20 @@ export type loginInput = {
   email: string;
   password: string;
 };
+
+export interface newHomeInput {
+  title: string;
+  description: string;
+  neighborhood: string;
+  address: string;
+  notes: string;
+  price: string;
+  area: string;
+  floor: string;
+  rooms: string;
+  bathrooms: string;
+  storage: string;
+  antiquity: string;
+  parking_spots: string;
+  images_url: string[];
+}

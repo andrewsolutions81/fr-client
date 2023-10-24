@@ -1,5 +1,17 @@
+// .footer {
+//   background-color: rgb(132, 148, 217);
+//   height: 3.75rem;
+//   margin-top: auto ;
+//   position: relative;
+// }
+
 .footer {
-  background-color: aqua;
-  height: 3.75rem;
-  margin-top: auto;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #333; /* Adjust the background color as needed. */
+  color: #fff; /* Text color. */
+  text-align: center;
+  padding: 20px; /* Adjust padding as needed. */
 }

@@ -5,7 +5,8 @@ import Homes from '../../components/Homes/Homes';
 import NewHome from '../../components/NewHome/NewHome';
 
 function Admin() {
-  const [tab, setTab] = useState('HOMES');
+  // const [tab, setTab] = useState('HOMES');
+  const [tab, setTab] = useState('NEW_HOME');
 
   const handleTabClick = (selectedTab:string) => {
     setTab(selectedTab);
