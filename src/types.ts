@@ -1,5 +1,3 @@
-import { types } from "util";
-
 export interface Home {
   id: string;
   title: string;

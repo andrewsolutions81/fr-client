@@ -1,7 +1,8 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import "./NewHome.styles.scss";
-import { apiNewHome } from "../../api/apiNewHome";
 import { newHomeInput } from "../../types";
+import { apiMultipleFilesUpload, apiNewHome } from "../../api/apiNewHome";
+import imageCompression from "browser-image-compression";
 
 const NewHome: React.FC = () => {
   const newHomeInputInitialState: newHomeInput = {
@@ -25,6 +26,7 @@ const NewHome: React.FC = () => {
     newHomeInputInitialState
   );
   const [errorMessage, setErrorMessage] = useState("");
+  const [files, setFiles] = useState([]);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -41,18 +43,83 @@ const NewHome: React.FC = () => {
     }
   };
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    const completeHome = {
-      ...newHomeinInput,
-      images_url: ["", ""],
-      favorite_users: ["", ""],
-      available: true,
-    };
-    const response = await apiNewHome(completeHome);
-    if(response){
-      console.log("api response:", response);
+  const handleImageChange = async (e: any) => {
+    const selectedImages = e.target.files;
+
+    if (selectedImages) {
+      const compressedImages = [];
+      for (const image of selectedImages) {
+        const options = {
+          maxSizeMB: 1, // Max size in megabytes
+          maxWidthOrHeight: 800, // Max width/height in pixels
+          useWebWorker: true,
+        };
+
+        try {
+          const compressedImage = await imageCompression(image, options);
+          compressedImages.push(compressedImage);
+        } catch (error) {
+          console.error("Error compressing image:", error);
+        }
+      }
+
+      setFiles(compressedImages);
     }
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
+    // how to manage single and multiple files ?
+    // apend to the form data
+    // send and wait for the images response
+    // if correct
+    // send the home info
+    // redirect.
+    const formData = new FormData()
+
+    formData.append("file",file)
+
+
+    e.preventDefault();
+    let completeHome = {
+      ...newHomeinInput,
+      favorite_users: [],
+      available: true,
+      images: [],
+    };
+    let imagesCloudinaryUrls = [];
+
+    try {
+      if (files) {
+        const imagesResponse = await apiMultipleFilesUpload(files);
+        if (imagesResponse) {
+          imagesResponse.map((item) => {
+            imagesCloudinaryUrls.push(item);
+          });
+          completeHome = {
+            ...completeHome,
+            images_url: imagesCloudinaryUrls,
+          };
+          return completeHome;
+        }
+      }
+    } catch (error:any) {
+      console.log("🚀 ~ file: NewHome.tsx:106 ~ handleSubmit ~ error:", error)
+      return new Error(error);
+    }
+    console.log("completeHome after image upload:",completeHome)
+
+    try {
+      const response = await apiNewHome(completeHome);
+      if (response) {
+        console.log("handle submit newhome.tsx response:", response);
+      }
+    } catch (error:any) {
+      console.log("🚀 ~ file: NewHome.tsx:117 ~ handleSubmit ~ error:", error)
+      return new Error(error)
+    }
+
+    // redirect to home
+
   };
 
   return (
@@ -61,6 +128,38 @@ const NewHome: React.FC = () => {
         <h2 className="newhome__nueva-casa"> Nueva Casa</h2>
         <span className="newhome_error">{errorMessage}</span>
         <div className="newhome__inputs--container">
+          <div className="newhome__input__images">
+            <label htmlFor="images" className="images">
+              Images
+            </label>
+            <input
+              type="file"
+              id="imageInput"
+              // id="upload-img"
+              name="imageInput"
+              // name="file"
+              accept="image/*"
+              onChange={handleImageChange}
+              multiple
+            />
+          </div>
+
+          <div className="newhome__image--container">
+            {files.length > 0 ? (
+              files.map((image, index) => (
+                <img
+                  key={index}
+                  src={URL.createObjectURL(image)}
+                  alt={`house_${index + 1}`}
+                  width="100"
+                  height="100"
+                />
+              ))
+            ) : (
+              <p>No images selected</p>
+            )}
+          </div>
+
           <div className="newhome__input newhome__input__title">
             <label htmlFor="title">Title</label>
             <input
@@ -251,6 +350,14 @@ const NewHome: React.FC = () => {
 
         <div className="newhome__actions">
           <span className="newhome_error">{errorMessage}</span>
+          <button
+            onClick={() => {
+              const toLog = files;
+              console.log("log files:", toLog);
+            }}
+          >
+            log
+          </button>
           <button
             className="newhome__btn"
             type="submit"
