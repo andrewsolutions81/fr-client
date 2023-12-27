@@ -19,7 +19,23 @@ export interface Home {
   createdAt: string;
   updatedAt: string;
 }
+export interface User {
+  id: string,
+  name: string,
+  email: string,
+}
 
+export interface AppState {
+  Users: User[];
+  Homes: Home[];
+  currentUser: User | null;
+  auth: {
+    isLoggedIn: boolean;
+    isAdmin: boolean;
+  };
+  errorClientDisplay: string | null;
+  countForLearning: number;
+}
 export interface FavoriteUser {
   id: string;
   username: string;
