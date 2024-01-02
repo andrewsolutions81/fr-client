@@ -36,6 +36,18 @@ export interface AppState {
   errorClientDisplay: string | null;
   countForLearning: number;
 }
+
+// const storeInitialState :AppState = {
+//   Users: [],
+//   Homes: [],
+//   currentUser: null,
+//   auth: {
+//     isLoggedIn: false,
+//     isAdmin: false,
+//   },
+//   errorClientDisplay: null,
+//   countForLearning:0,
+// };
 export interface FavoriteUser {
   id: string;
   username: string;
