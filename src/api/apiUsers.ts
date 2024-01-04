@@ -1,6 +1,6 @@
 import BASE_URL from "../services/apiConfig";
 
-export const apiUsers = async () => {
+const apiUsers = async () => {
   try {
     const requestOptions = {
       method: "GET",
@@ -22,3 +22,5 @@ export const apiUsers = async () => {
     return new Error(error);
   }
 };
+
+export default apiUsers
