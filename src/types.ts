@@ -46,7 +46,6 @@ export interface AppState {
 //     isAdmin: false,
 //   },
 //   errorClientDisplay: null,
-//   countForLearning:0,
 // };
 export interface FavoriteUser {
   id: string;
