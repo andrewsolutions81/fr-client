@@ -40,9 +40,9 @@ export interface AppState {
 // const storeInitialState :AppState = {
 //   Users: [],
 //   Homes: [],
-//   currentUser: null,
+//   CurrentUser: null,
 //   auth: {
-//     isLoggedIn: false,
+//     isLogged: false,
 //     isAdmin: false,
 //   },
 //   errorClientDisplay: null,
