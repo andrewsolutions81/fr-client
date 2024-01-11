@@ -1,24 +1,22 @@
 // userSlice.ts
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import apiUsers from '../../api/apiUsers';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import apiUsers from "../../api/apiUsers";
+import { usersInitialStateInterface } from "../../types";
 
-export const fetchUsers = createAsyncThunk(
-  'users/fetchUsers',
-  async () => {
-    const response = await apiUsers();
-    return response.data;
-  }
-);
-
-const initialState = {
+const initialState: usersInitialStateInterface = {
   users: [],
   isDataAvailable: false,
   isLoading: false,
   error: null,
 };
 
+export const fetchUsers = createAsyncThunk("users/fetchUsers", async () => {
+  const response = await apiUsers();
+  return response.data;
+});
+
 const userSlice = createSlice({
-  name: 'users',
+  name: "users",
   initialState,
   reducers: {},
   extraReducers: (builder) => {

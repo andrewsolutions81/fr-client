@@ -1,5 +1,5 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
 import "./NewHome.styles.scss";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 import { newHomeInput } from "../../types";
 import { apiMultipleFilesUpload, apiNewHome } from "../../api/apiNewHome";
 import imageCompression from "browser-image-compression";
@@ -63,30 +63,24 @@ const NewHome: React.FC = () => {
         }
       }
 
-      setFiles(compressedImages);
+      setFiles(compressedImages as any);
     }
   };
 
   const handleSubmit = async (e: FormEvent) => {
-    // how to manage single and multiple files ?
-    // apend to the form data
-    // send and wait for the images response
-    // if correct
-    // send the home info
-    // redirect.
-    const formData = new FormData()
+    e.preventDefault();
 
+    const formData = new FormData()
     formData.append("file",file)
 
 
-    e.preventDefault();
     let completeHome = {
       ...newHomeinInput,
       favorite_users: [],
       available: true,
       images: [],
     };
-    let imagesCloudinaryUrls = [];
+    let imagesCloudinaryUrls : any = [];
 
     try {
       if (files) {
@@ -103,7 +97,6 @@ const NewHome: React.FC = () => {
         }
       }
     } catch (error:any) {
-      console.log("🚀 ~ file: NewHome.tsx:106 ~ handleSubmit ~ error:", error)
       return new Error(error);
     }
     console.log("completeHome after image upload:",completeHome)
@@ -114,11 +107,10 @@ const NewHome: React.FC = () => {
         console.log("handle submit newhome.tsx response:", response);
       }
     } catch (error:any) {
-      console.log("🚀 ~ file: NewHome.tsx:117 ~ handleSubmit ~ error:", error)
       return new Error(error)
     }
 
-    // redirect to home
+    console.log("house and images upload succesfull. redirect home")
 
   };
 
@@ -352,8 +344,8 @@ const NewHome: React.FC = () => {
           <span className="newhome_error">{errorMessage}</span>
           <button
             onClick={() => {
-              const toLog = files;
-              console.log("log files:", toLog);
+              const log = files;
+              console.log("log files:", log);
             }}
           >
             log

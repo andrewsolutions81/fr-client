@@ -92,3 +92,21 @@ export interface newHomeInput {
   parking_spots: string;
   images_url: string[];
 }
+
+export interface usersInitialStateInterface {
+  users: [],
+  isDataAvailable: boolean,
+  isLoading: boolean,
+  error?: null | string | undefined,
+}
+
+export interface userData {
+  id: string,
+  username: string,
+  email: string,
+  phone_number: string,
+}
+
+export interface FetchUsersPayload {
+  users: userData[];
+}
