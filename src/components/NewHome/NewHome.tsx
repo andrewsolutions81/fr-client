@@ -71,6 +71,8 @@ const NewHome: React.FC = () => {
     e.preventDefault();
 
     const formData = new FormData()
+
+    let file =""// ERRASE THIS !
     formData.append("file",file)
 
 

@@ -15,7 +15,6 @@ const apiUsers = async () => {
     }
 
     const res = await response.json();
-    // console.log("apiUsers: ",res);
     return res
   } catch (error:any) {
     console.error("❌ apiUsers error :", error);

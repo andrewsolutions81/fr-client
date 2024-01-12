@@ -1,3 +1,31 @@
+//apiHomes.ts
+import BASE_URL from "../services/apiConfig";
+
+const apiHomes = async ()=> {
+  try {
+    const requestOptions = {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    };
+    const response = await fetch(
+      `${BASE_URL}/api/homes`,
+      requestOptions
+    );
+    if (!response.ok) {
+      return new Error(`❌ apiHomes response.status: ${response.status}`);
+    }
+
+    const res = await response.json();
+    return res
+
+  } catch (error:any) {
+    console.error("❌ apiHomes error :", error);
+    return new Error(error);
+  }
+}
+
+export default apiHomes
+
 const img = "https://upload.wikimedia.org/wikipedia/commons/f/f0/Kuopio%2C_Apartment_house_in_Kuopio.JPG"
 export const fetchHomes = async () => {
   return new Promise<{ message: string; data: any[] }>((resolve) => {
@@ -14,8 +42,15 @@ export const fetchHomes = async () => {
             address: "home address example",
             notes: "home notes example",
             images_url: [
-              img,
-              "example image 2",
+              {
+              secure_url :"https://upload.wikimedia.org/wikipedia/commons/e/ee/Red_Power_Wagon_WM-100.jpg"
+            },
+              {
+              secure_url :"https://upload.wikimedia.org/wikipedia/commons/3/31/1966_Chevrolet_C10_pickup_truck_%289581019245%29.jpg"
+            },
+              {
+              secure_url :img
+            },
             ],
             price: 250,
             area: 100,
@@ -78,7 +113,17 @@ export const fetchHomes = async () => {
             neighborhood: "home neighborhood example",
             address: "home address example",
             notes: "home notes example",
-            images_url: [img , "example image 2"],
+            images_url: [
+              {
+              secure_url :"https://upload.wikimedia.org/wikipedia/commons/3/31/1966_Chevrolet_C10_pickup_truck_%289581019245%29.jpg"
+            },
+              {
+              secure_url :img
+            },
+              {
+              secure_url :img
+            },
+            ],
             price: 250,
             area: 100,
             floor: 3,
@@ -130,7 +175,17 @@ export const fetchHomes = async () => {
             neighborhood: "home neighborhood example",
             address: "home address example",
             notes: "home notes example",
-            images_url: [img, "example image 2"],
+            images_url: [
+              {
+              secure_url :img
+            },
+              {
+              secure_url :img
+            },
+              {
+              secure_url :img
+            },
+            ],
             price: 250,
             area: 100,
             floor: 3,
