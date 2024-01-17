@@ -27,7 +27,6 @@ const Homes: React.FC = () => {
         <Loading />
       ) : homesData ? (
         homesData.data.map((home: Home) => {
-          console.log("Homes.tsx home.id:", home.id);
           return (
             <HomeCard
               key={home.id}
