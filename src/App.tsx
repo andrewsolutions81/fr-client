@@ -14,6 +14,7 @@ import Login from './pages/Login/Login';
 import SignUp from './pages/SignUp/SignUp';
 import Favorites from './pages/Favorites/Favorites';
 import User from './pages/User/User';
+import SingleHome from './pages/SingleHome/SingleHome';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/home/:id" element={<SingleHome />} />
         <Route path="/user" element={<User />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/admin" element={<Admin />} />
