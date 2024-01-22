@@ -30,8 +30,8 @@ const LoginForm: React.FC = () => {
   return (
     <div className="loginform">
       <form action="" className="loginform__form" onSubmit={handleSubmit}>
-        <h2 className="loginform__title">Santa Barbara Inmobiliaria</h2>
-        <h2 className="loginform__iniciarsesion">Iniciar sesion </h2>
+        <h2 className="loginform__title">Santa Barbara Inmobiliaria Login</h2>
+        <span className="loginform__iniciarsesion">Iniciar sesion </span>
         <div className="loginform__inputs--container">
           <input
             className="loginform__input loginform__input--email"

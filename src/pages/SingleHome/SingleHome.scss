@@ -1,0 +1,15 @@
+.singlehome {
+  // Your existing styles for .singlehome
+
+  &__grid--container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px; // Adjust the gap between grid items
+    margin-top: 16px; // Adjust the margin as needed
+  }
+
+  &__grid--item {
+    border: 1px solid #ccc; // Add styling for grid items
+    padding: 8px;
+  }
+}
