@@ -1,14 +1,17 @@
-//SingleHome.tsx
-import "./SingleHome.scss"
+// SingleHome.tsx
+import "./SingleHome.style.css";
+import "react-image-gallery/styles/css/image-gallery.css"
 import { Home } from "../../types";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Loading from "../../components/Loading/Loading";
+import Gallery from 'react-image-gallery';
 
 const SingleHome = () => {
   const { id } = useParams();
   const [home, setHome] = useState<null | Home>(null);
   const [loading, setLoading] = useState(false);
+  const isAdmin = true
 
   useEffect(() => {
     // Simulating an API call to fetch home data by id
@@ -19,13 +22,13 @@ const SingleHome = () => {
         id: "123",
         title: "Beautiful Home",
         available: true,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        description: "Great house with great view, amazing space for the location at a reasonable price.",
         neighborhood: "Suburbia",
         address: "123 Main Street",
         notes: "Some important notes about the home.",
         images_url: [
-          { secure_url: "https://example.com/image1.jpg" },
-          { secure_url: "https://example.com/image2.jpg" },
+          { secure_url: "https://upload.wikimedia.org/wikipedia/commons/e/ee/Red_Power_Wagon_WM-100.jpg" },
+          { secure_url: "https://upload.wikimedia.org/wikipedia/commons/3/31/1966_Chevrolet_C10_pickup_truck_%289581019245%29.jpg" },
         ],
         price: 200000,
         area: 150,
@@ -45,7 +48,7 @@ const SingleHome = () => {
     };
 
     fetchHomeData();
-  }, [id]);
+  }, []);
 
   return (
     <section className="singlehome">
@@ -53,36 +56,35 @@ const SingleHome = () => {
         <Loading />
       ) : (
         <>
-          <p>Home ID: {id}</p>
-          <h3 className="singlehome__title">Title</h3>
-          <img src="" alt="" className="singlehome__img" />
+          <h3 className="singlehome__title">{home?.title}</h3>
+          <div className="singlehome__image--container">
+            {home?.images_url && (
+              <Gallery
+                items={home.images_url.map((image) => ({
+                  original: image.secure_url,
+                  thumbnail: image.secure_url,
+                }))}
+              />
+            )}
+          </div>
           <span className="singlehome__description--span">
             Descripción general
           </span>
           <p className="singlehome__description">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Dignissimos corrupti autem, odio error nam sunt debitis tenetur
-            aliquam aperiam illo nostrum, placeat illum alias repellat neque
-            architecto amet aliquid odit.
+            {home?.description}
           </p>
-          <div className="singlehome__grid--container">
+
+          <section className="singlehome__grid--container">
             <div className="singlehome__grid--item">
               ID: {home?.id}
             </div>
-            <div className="singlehome__grid--item">
-              Title: {home?.title}
-            </div>
-            <div className="singlehome__grid--item">
+            <div className="singlehome__grid--item available">
               Available: {home?.available ? "Yes" : "No"}
             </div>
-            <div className="singlehome__grid--item">
-              Description: {home?.description}
+            <div className="singlehome__grid--item neighborhood">
+              Barrio: {home?.neighborhood}
             </div>
-            <div className="singlehome__grid--item">
-              Neighborhood: {home?.neighborhood}
-            </div>
-            {/* ... Repeat for other properties */}
-          </div>
+          </section>
         </>
       )}
     </section>

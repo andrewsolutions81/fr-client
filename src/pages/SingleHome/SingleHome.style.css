@@ -1,0 +1,14 @@
+/* SingleHome.style.css */
+/* mobile first */
+.singlehome {
+  max-width: 100vw;
+}
+
+.singlehome__image--container {
+  max-width: 90vw;
+  margin: auto;
+}
+
+.singlehome__image--container img {
+  max-width: 100%;
+}
