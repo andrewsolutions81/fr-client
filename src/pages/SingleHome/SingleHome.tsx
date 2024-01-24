@@ -80,15 +80,62 @@ const SingleHome = () => {
             </p>
             <p className="singlehome__description">{home?.description}</p>
             <section className="singlehome__grid--container">
+              {/* admin section  */}
+              {isAdmin && (
+                <>
+                  <div className="singlehome__grid--item name notes">
+                    <span className="material-icons icon description-icon red">
+                      description
+                    </span>
+                    Notas:
+                  </div>
+                  <div className="singlehome__grid--item value notes">
+                    {home?.notes}
+                  </div>
+
+                  <div className="singlehome__grid--item name address">
+                    <span className="material-icons icon explore-icon red">
+                      explore
+                    </span>
+                    Direccion:
+                  </div>
+                  <div className="singlehome__grid--item value address">
+                    {home?.address}
+                  </div>
+
+                  <div className="singlehome__grid--item name createdAt">
+                    <span className="material-icons icon add_circle-icon red">
+                      add_circle
+                    </span>
+                    Creado el :
+                  </div>
+                  <div className="singlehome__grid--item value createdAt">
+                    {home?.createdAt}
+                  </div>
+
+                  <div className="singlehome__grid--item name updatedAt">
+                    <span className="material-icons icon sync_alt-icon red">
+                      sync_alt
+                    </span>
+                    Modificado el :
+                  </div>
+                  <div className="singlehome__grid--item value updatedAt">
+                    {home?.updatedAt}
+                  </div>
+                </>
+              )}
+              {/* user section */}
               <div className="singlehome__grid--item name id">
-                <span className="material-icons icon tag-icon">tag</span> Id:
+                <span className="material-icons icon tag-icon">tag</span>
+                Id:
               </div>
               <div className="singlehome__grid--item value id">{home?.id}</div>
+
               <div className="singlehome__grid--item name available">
                 <span className="material-icons icon check_box-icon">
                   check_box
                 </span>
-                Available :
+                Disponible :
               </div>
               <div className="singlehome__grid--item value available">
                 {home?.available ? "Si" : "No"}
@@ -140,18 +187,31 @@ const SingleHome = () => {
                 {home?.antiquity} años
               </div>
               <div className="singlehome__grid--item name storage">
-                <span className="material-icons icon warehouse-icon">warehouse</span>
+                <span className="material-icons icon warehouse-icon">
+                  warehouse
+                </span>
                 Depositos :
               </div>
               <div className="singlehome__grid--item value storage">
                 {home?.storage}
               </div>
               <div className="singlehome__grid--item name parking_spots">
-                <span className="material-icons icon local_parking-icon">local_parking</span>
+                <span className="material-icons icon local_parking-icon">
+                  local_parking
+                </span>
                 Parqueaderos :
               </div>
               <div className="singlehome__grid--item value parking_spots">
                 {home?.parking_spots}
+              </div>
+              <div className="singlehome__grid--item name neighborhood">
+                <span className="material-icons icon location_on-icon">
+                    location_on
+                </span>
+                neighborhood :
+              </div>
+              <div className="singlehome__grid--item value neighborhood">
+                {home?.neighborhood}
               </div>
             </section>
           </div>
