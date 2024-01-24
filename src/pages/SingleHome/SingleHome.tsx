@@ -1,17 +1,17 @@
 // SingleHome.tsx
 import "./SingleHome.style.css";
-import "react-image-gallery/styles/css/image-gallery.css"
+import "react-image-gallery/styles/css/image-gallery.css";
 import { Home } from "../../types";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Loading from "../../components/Loading/Loading";
-import Gallery from 'react-image-gallery';
+import Gallery from "react-image-gallery";
 
 const SingleHome = () => {
   const { id } = useParams();
   const [home, setHome] = useState<null | Home>(null);
   const [loading, setLoading] = useState(false);
-  const isAdmin = true
+  const isAdmin = true;
 
   useEffect(() => {
     // Simulating an API call to fetch home data by id
@@ -22,13 +22,20 @@ const SingleHome = () => {
         id: "123",
         title: "Beautiful Home",
         available: true,
-        description: "Great house with great view, amazing space for the location at a reasonable price.",
+        description:
+          "Great house with great view, amazing space for the location at a reasonable price.",
         neighborhood: "Santa Barbara",
         address: "123 Main Street",
         notes: "Some important notes about the home.",
         images_url: [
-          { secure_url: "https://upload.wikimedia.org/wikipedia/commons/e/ee/Red_Power_Wagon_WM-100.jpg" },
-          { secure_url: "https://upload.wikimedia.org/wikipedia/commons/3/31/1966_Chevrolet_C10_pickup_truck_%289581019245%29.jpg" },
+          {
+            secure_url:
+              "https://upload.wikimedia.org/wikipedia/commons/e/ee/Red_Power_Wagon_WM-100.jpg",
+          },
+          {
+            secure_url:
+              "https://upload.wikimedia.org/wikipedia/commons/3/31/1966_Chevrolet_C10_pickup_truck_%289581019245%29.jpg",
+          },
         ],
         price: 200000,
         area: 150,
@@ -67,25 +74,86 @@ const SingleHome = () => {
               />
             )}
           </div>
-          <div className="      ">
-          <p className="singlehome__description--span">
-            Descripción general:
-          </p>
-          <p className="singlehome__description">
-            {home?.description}
-          </p>
-
-          <section className="singlehome__grid--container">
-            <div className="singlehome__grid--item">
-              ID: {home?.id}
-            </div>
-            <div className="singlehome__grid--item available">
-              Available: {home?.available ? "Yes" : "No"}
-            </div>
-            <div className="singlehome__grid--item neighborhood">
-              Barrio: {home?.neighborhood}
-            </div>
-          </section>
+          <div className="singlehome__info--container">
+            <p className="singlehome__description--span">
+              Descripción general:
+            </p>
+            <p className="singlehome__description">{home?.description}</p>
+            <section className="singlehome__grid--container">
+              <div className="singlehome__grid--item name id">
+                <span className="material-icons icon tag-icon">tag</span> Id:
+              </div>
+              <div className="singlehome__grid--item value id">{home?.id}</div>
+              <div className="singlehome__grid--item name available">
+                <span className="material-icons icon check_box-icon">
+                  check_box
+                </span>
+                Available :
+              </div>
+              <div className="singlehome__grid--item value available">
+                {home?.available ? "Si" : "No"}
+              </div>
+              <div className="singlehome__grid--item name id">
+                <span className="material-icons icon paid-icon">paid</span>
+                Precio :
+              </div>
+              <div className="singlehome__grid--item value id">
+                $ {home?.price} COP millones de pesos
+              </div>
+              <div className="singlehome__grid--item name area">
+                <span className="material-icons icon crop_3_2-icon">
+                  crop_3_2
+                </span>
+                Area :
+              </div>
+              <div className="singlehome__grid--item value area">
+                {home?.area}m²
+              </div>
+              <div className="singlehome__grid--item name floor">
+                <span className="material-icons icon stairs-icon">stairs</span>
+                Piso :
+              </div>
+              <div className="singlehome__grid--item value floor">
+                {home?.floor} piso
+              </div>
+              <div className="singlehome__grid--item name rooms">
+                <span className="material-icons icon bed-icon">bed</span>
+                Cuartos :
+              </div>
+              <div className="singlehome__grid--item value rooms">
+                {home?.rooms}
+              </div>
+              <div className="singlehome__grid--item name bathrooms">
+                <span className="material-icons icon shower-icon">shower</span>
+                Baños :
+              </div>
+              <div className="singlehome__grid--item value bathrooms">
+                {home?.bathrooms}
+              </div>
+              <div className="singlehome__grid--item name antiquity">
+                <span className="material-icons icon history-icon">
+                  history
+                </span>
+                Antiguedad :
+              </div>
+              <div className="singlehome__grid--item value antiquity">
+                {home?.antiquity} años
+              </div>
+              <div className="singlehome__grid--item name storage">
+                <span className="material-icons icon warehouse-icon">warehouse</span>
+                Depositos :
+              </div>
+              <div className="singlehome__grid--item value storage">
+                {home?.storage}
+              </div>
+              <div className="singlehome__grid--item name parking_spots">
+                <span className="material-icons icon local_parking-icon">local_parking</span>
+                Parqueaderos :
+              </div>
+              <div className="singlehome__grid--item value parking_spots">
+                {home?.parking_spots}
+              </div>
+            </section>
           </div>
         </>
       )}

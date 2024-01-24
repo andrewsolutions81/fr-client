@@ -30,5 +30,26 @@
 
 .singlehome__description {
   text-align: left;
-  margin-bottom: 1rem ;
+  margin-bottom: 1rem;
+}
+
+.singlehome__grid--container {
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border: 1px solid #4fa7fa;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.singlehome__grid--item {
+  border: 1px solid #4fa7fa;
+  display: flex;
+  align-items: center;
+}
+
+.singlehome__grid--item.name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
