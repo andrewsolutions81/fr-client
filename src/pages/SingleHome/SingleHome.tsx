@@ -23,7 +23,7 @@ const SingleHome = () => {
         title: "Beautiful Home",
         available: true,
         description: "Great house with great view, amazing space for the location at a reasonable price.",
-        neighborhood: "Suburbia",
+        neighborhood: "Santa Barbara",
         address: "123 Main Street",
         notes: "Some important notes about the home.",
         images_url: [
@@ -67,9 +67,10 @@ const SingleHome = () => {
               />
             )}
           </div>
-          <span className="singlehome__description--span">
-            Descripción general
-          </span>
+          <div className="      ">
+          <p className="singlehome__description--span">
+            Descripción general:
+          </p>
           <p className="singlehome__description">
             {home?.description}
           </p>
@@ -85,6 +86,7 @@ const SingleHome = () => {
               Barrio: {home?.neighborhood}
             </div>
           </section>
+          </div>
         </>
       )}
     </section>
