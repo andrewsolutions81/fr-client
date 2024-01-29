@@ -1,11 +1,14 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import "./LoginForm.style.scss";
 import { apiLogin } from "../../api/apiAuth";
+import { useNavigate } from "react-router-dom";
+
 // import { isLogged } from "../../services/loggedUserService";
 
 const LoginForm: React.FC = () => {
   const [loginInput, setloginInput] = useState({ email: "", password: "" });
   const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -22,9 +25,13 @@ const LoginForm: React.FC = () => {
     }
   };
 
-  const handleSubmit =  (e: FormEvent) => {
+  const navigateSignup = () => {
+    navigate("/signup");
+  };
+
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    apiLogin(loginInput)
+    apiLogin(loginInput);
   };
 
   return (
@@ -50,7 +57,7 @@ const LoginForm: React.FC = () => {
           <span className="loginform_error">{errorMessage}</span>
         </div>
         <div className="loginform__actions">
-          <a className="loginform__login" href="google.com">
+          <a className="loginform__signup" onClick={navigateSignup}>
             Sign up
           </a>
           <button className="loginform__btn" type="submit">

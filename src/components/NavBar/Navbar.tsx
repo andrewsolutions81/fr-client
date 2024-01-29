@@ -31,6 +31,15 @@ const Navbar: React.FC<NavbarProps> = ({toggleIsNavBarOpen, setIsNavBarOpen}) =>
     setIsNavBarOpen(false)
   };
 
+  const navigateLogin = () => {
+    navigate("/login")
+    setIsNavBarOpen(false)
+  }
+  const navigateSignup = () => {
+    navigate("/signup")
+    setIsNavBarOpen(false)
+  }
+
   return (
     <nav className="navbar">
       <div className="navbar__menu__container">
@@ -45,8 +54,16 @@ const Navbar: React.FC<NavbarProps> = ({toggleIsNavBarOpen, setIsNavBarOpen}) =>
           <p className="inicio navbar__item--text">Inicio</p>
         </li>
         <li className="navbar__item navbar__item--usuario" onClick={navigateUser}>
-          <span className="material-icons icon person-icon">person</span>
+          <span className="material-icons icon account_circle-icon">account_circle</span>
           <p className="usuario navbar__item--text">Mi cuenta</p>
+        </li>
+        <li className="navbar__item navbar__item--login" onClick={navigateLogin}>
+          <span className="material-icons icon person-icon">person</span>
+          <p className="usuario navbar__item--text">Login</p>
+        </li>
+        <li className="navbar__item navbar__item--signup" onClick={navigateSignup}>
+          <span className="material-icons icon person_add-icon">person_add</span>
+          <p className="usuario navbar__item--text">Sign Up</p>
         </li>
         <hr className="navbar__line" />
         <li className="navbar__item navbar__item--contacto" onClick={navigateContact}>

@@ -2,6 +2,7 @@ import React,{ ChangeEvent, FormEvent, useState }from "react";
 import "./SignupForm.style.scss"
 import { signupInput } from "../../types"
 import { apiSignup } from "../../api/apiAuth";
+import { useNavigate } from 'react-router-dom';
 
 const SignupForm = () => {
   const signupInitialState :signupInput =
@@ -12,9 +13,11 @@ const SignupForm = () => {
     passwordCheck: "",
     phone_number: "",
   }
-
   const [ signupInput, setSignupInput ] = useState(signupInitialState);
   const [ errorMessage, setErrorMessage ] = useState("")
+  const navigate = useNavigate();
+
+  const navigateLogin = ()=> { navigate("/login")}
 
   const isValidEmail = (email: string) => {
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -84,20 +87,20 @@ const SignupForm = () => {
           <span className="signupform_error">{errorMessage}</span>
         </div>
         <div className="signupform__actions">
-          <a className="signupform__login" href="google.com">
+          <p className="signupform__login" onClick={navigateLogin}>
             login
-          </a>
+          </p>
           <button className="signupform__btn" type="submit">Crear cuenta</button>
         </div>
       </form>
-      <div className="signupform__external">
+      {/* <div className="signupform__external">
           <hr className="line" />
           <h4 className="crearcuentacon"> Crear cuenta con: </h4>
           <hr className="line" />
       </div>
       <div className="google__container">
         <span className="google">google</span>
-      </div>
+      </div> */}
     </div>
   );
 };
