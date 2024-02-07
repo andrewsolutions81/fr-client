@@ -1,52 +1,107 @@
 // authSlice.ts
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import apiUsers from "../../api/apiUsers";
-import { usersInitialStateInterface } from "../../types";
+import { apiSignup, apiLogin } from "../../api/apiAuth";
+import { signupInput, loginInput } from "../../types";
 
+interface User {
+  createdAt: string;
+  email: string;
+  favorite_homes: any[];
+  id: string;
+  is_admin: boolean;
+  phone_number: string;
+  updatedAt: string;
+  username: string;
+}
 interface authInitialState {
-  isDataAvailable: boolean,
-  isLogged: boolean,
-  isAdmin: boolean,
-  currentUser: null,
-  loading: boolean,
-  error : null | string | undefined,
+  isDataAvailable: boolean;
+  isLogged: boolean;
+  isAdmin: boolean;
+  currentUser: null | User;
+  loading: boolean;
+  error: null | string | undefined;
 }
 
-const initialState: authInitialState = {
-  isDataAvailable: false,
-  isLogged: false,
-  isAdmin: false,
-  currentUser: null,
-  loading: false,
-  error: null,
-};
+export const signupUser = createAsyncThunk(
+  "auth/signupUser",
+  async (userData: signupInput) => {
+    const response = await apiSignup(userData);
+    return response.data;
+  }
+);
 
-export const fetchUsers = createAsyncThunk("users/fetchUsers", async () => {
-  const response = await apiUsers();
-  return response.data;
-});
+export const loginUser = createAsyncThunk(
+  "auth/loginUser",
+  async (credentials: loginInput) => {
+    const response = await apiLogin(credentials);
+    return response.data;
+  }
+);
 
 const authSlice = createSlice({
   name: "auth",
-  initialState,
-  reducers: {},
+  initialState: {
+    isDataAvailable: false,
+    isLogged: false,
+    isAdmin: false,
+    currentUser: null,
+    loading: false,
+    error: null,
+  } as authInitialState,
+  reducers: {
+    logoutUser: (state) => {
+      state.isDataAvailable = false;
+      state.isLogged = false;
+      state.isAdmin = false;
+      state.currentUser = null;
+      state.loading = false;
+      state.error = null;
+    },
+  },
   extraReducers: (builder) => {
+    //signup
     builder
-      .addCase(fetchUsers.pending, (state) => {
+      .addCase(signupUser.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchUsers.fulfilled, (state, action) => {
+      .addCase(signupUser.fulfilled, (state, action) => {
         state.loading = false;
         state.isDataAvailable = true;
         state.currentUser = action.payload;
       })
-      .addCase(fetchUsers.rejected, (state, action) => {
+      .addCase(signupUser.rejected, (state, action) => {
         state.loading = false;
         state.isDataAvailable = false;
         state.error = action.error.message;
       });
+    // login
+    builder
+      .addCase(loginUser.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(loginUser.fulfilled, (state, action) => {
+        state.loading = false;
+        state.isLogged = true;
+        state.currentUser = action.payload;
+      })
+      .addCase(loginUser.rejected, (state, action) => {
+        state.loading = false;
+        state.isLogged = false;
+        state.error = action.error.message;
+      });
+    // logout
+      builder.addCase(logoutUser, (state) => {
+      state.isDataAvailable = false;
+      state.isLogged = false;
+      state.isAdmin = false;
+      state.currentUser = null;
+      state.loading = false;
+      state.error = null;
+    });
   },
 });
 
+export const { logoutUser } = authSlice.actions;
 export default authSlice.reducer;

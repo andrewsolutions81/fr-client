@@ -1,8 +1,10 @@
 import React from 'react'
 
+
 const User = () => {
   return (
-    <div>User</div>
+    
+    <h4>User</h4>
   )
 }
 

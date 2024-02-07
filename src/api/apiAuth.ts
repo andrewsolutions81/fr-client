@@ -1,8 +1,9 @@
+//apiAuth.ts
 import { signupInput , loginInput} from "../types";
 import BASE_URL from "../services/apiConfig";
-import { isLogged } from "../services/loggedUserService";
-
-
+import apiUserById from "./apiUserById";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "../store/features/authSlice";
 
 export const apiSignup = async (user: signupInput) => {
   try {
@@ -28,12 +29,14 @@ export const apiSignup = async (user: signupInput) => {
       return new Error(`❌ apiSignup  token error.`);
     }
 
+    console.log("data in apiSignup: ",data)
     return data;
   } catch (error: any) {
     console.error("❌ apiSignup error :", error);
     return new Error(error);
   }
 };
+
 
 export const apiLogin = async (user: loginInput) => {
   try {
@@ -48,14 +51,17 @@ export const apiLogin = async (user: loginInput) => {
     const response = await fetch(`${BASE_URL}/auth/local/login`, options);
     const data = await response.json();
 
+    //store the token
     if (data.token) {
-      document.cookie = `token=${data.token}; path=/; secure; HttpOnly; SameSite=Strict`;
-    }
-    if(!isLogged){
-      console.error("❌ apiLogin error, no cookie token stored.");
+      const token = data.token
+      document.cookie = `token=${token}; path=/; secure; HttpOnly; SameSite=Strict`;
     }
 
-    return data
+    // fetch/get user info
+    const userId = data.data.id;
+    const userData = await apiUserById(userId);
+    console.log("userData.data",userData.data)
+    return userData.data
   } catch (error: any) {
     console.error("❌ apiLogin error :", error);
     return new Error(error)

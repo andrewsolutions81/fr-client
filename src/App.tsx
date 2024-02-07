@@ -4,6 +4,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import { useEffect } from 'react';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Home from './pages/Home/Home';
@@ -15,8 +16,14 @@ import SignUp from './pages/SignUp/SignUp';
 import Favorites from './pages/Favorites/Favorites';
 import User from './pages/User/User';
 import SingleHome from './pages/SingleHome/SingleHome';
+import DevComp from './components/DevComp/DevComp';
 
 function App() {
+
+  // set user in store
+  useEffect(() => {
+  }, []);
+
   return (
     <div className="App">
       <Header />
@@ -32,6 +39,7 @@ function App() {
         <Route path="/admin" element={<Admin />} />
       </Routes>
       {/* <Footer /> */}
+      <DevComp />
     </div>
   );
 }

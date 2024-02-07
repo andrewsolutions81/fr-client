@@ -57,9 +57,9 @@ const LoginForm: React.FC = () => {
           <span className="loginform_error">{errorMessage}</span>
         </div>
         <div className="loginform__actions">
-          <a className="loginform__signup" onClick={navigateSignup}>
+          <span className="loginform__signup" onClick={navigateSignup}>
             Sign up
-          </a>
+          </span>
           <button className="loginform__btn" type="submit">
             Ingresar
           </button>

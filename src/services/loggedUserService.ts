@@ -1,3 +1,4 @@
+//loggedUserService.ts
 export const isLogged = (): boolean => {
   const cookies = document.cookie;
   return cookies.includes("token=");
