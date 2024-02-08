@@ -54,13 +54,15 @@ export const apiLogin = async (user: loginInput) => {
     //store the token
     if (data.token) {
       const token = data.token
-      document.cookie = `token=${token}; path=/; secure; HttpOnly; SameSite=Strict`;
+      console.log("token:",token)
+      // document.cookie = `token=${token}; path=/; secure; HttpOnly; SameSite=Strict`;
+      document.cookie = `token=${token}`;
     }
 
     // fetch/get user info
     const userId = data.data.id;
     const userData = await apiUserById(userId);
-    console.log("userData.data",userData.data)
+    console.log("userData.data returned from apiAuth.ts apiLogin()",userData.data)
     return userData.data
   } catch (error: any) {
     console.error("❌ apiLogin error :", error);

@@ -22,6 +22,19 @@ function App() {
 
   // set user in store
   useEffect(() => {
+    try {
+      const token = document.cookie.replace(/(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/, '$1');
+      if(token){
+        console.log("token found in app.tsx", token)
+      } else {
+        console.log("no token")
+      }
+    } catch (error) {
+      console.log("Error in useEffect:", error);
+    }
+
+
+
   }, []);
 
   return (
