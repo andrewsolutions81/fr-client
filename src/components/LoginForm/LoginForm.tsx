@@ -2,10 +2,11 @@ import React, { ChangeEvent, FormEvent, useState } from "react";
 import "./LoginForm.style.scss";
 import { apiLogin } from "../../api/apiAuth";
 import { useNavigate } from "react-router-dom";
-
-// import { isLogged } from "../../services/loggedUserService";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../store/features/authSlice"
 
 const LoginForm: React.FC = () => {
+  const dispatch = useDispatch();
   const [loginInput, setloginInput] = useState({ email: "", password: "" });
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
@@ -29,9 +30,11 @@ const LoginForm: React.FC = () => {
     navigate("/signup");
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async(e: FormEvent) => {
     e.preventDefault();
-    apiLogin(loginInput);
+    const userData = await apiLogin(loginInput);
+    console.log("userdata in loginform submit",userData)
+    dispatch(setUser(userData));
   };
 
   return (

@@ -2,8 +2,8 @@
 import { signupInput , loginInput} from "../types";
 import BASE_URL from "../services/apiConfig";
 import apiUserById from "./apiUserById";
-import { useDispatch, useSelector } from "react-redux";
-import { loginUser } from "../store/features/authSlice";
+
+const getToken = () => document.cookie
 
 export const apiSignup = async (user: signupInput) => {
   try {
@@ -54,7 +54,6 @@ export const apiLogin = async (user: loginInput) => {
     //store the token
     if (data.token) {
       const token = data.token
-      console.log("token:",token)
       // document.cookie = `token=${token}; path=/; secure; HttpOnly; SameSite=Strict`;
       document.cookie = `token=${token}`;
     }
@@ -62,10 +61,43 @@ export const apiLogin = async (user: loginInput) => {
     // fetch/get user info
     const userId = data.data.id;
     const userData = await apiUserById(userId);
-    console.log("userData.data returned from apiAuth.ts apiLogin()",userData.data)
     return userData.data
   } catch (error: any) {
     console.error("❌ apiLogin error :", error);
     return new Error(error)
   }
 }
+
+export const apiSecureLogin = async (user: loginInput) => {
+  try {
+    const token = getToken();
+    console.log("🚀 ~ apiSecureLogin ~ token:", token)
+
+    if (!token) {
+      throw new Error("Token not available");
+    }
+
+    const options = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+      body: JSON.stringify(user),//this can't be done
+    };
+
+    const response = await fetch(`${BASE_URL}/auth/local/login/secure/`, options);
+
+    if (!response.ok) {
+      throw new Error(`❌ apiSecureRoute response.status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log("Data from secure route:", data);
+
+    return data;
+  } catch (error: any) {
+    console.error("❌ apiSecureRoute error:", error);
+    return new Error(error);
+  }
+};

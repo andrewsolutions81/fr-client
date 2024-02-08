@@ -1,5 +1,5 @@
 // authSlice.ts
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk ,createAction} from "@reduxjs/toolkit";
 import { apiSignup, apiLogin } from "../../api/apiAuth";
 import { signupInput, loginInput } from "../../types";
 
@@ -13,7 +13,7 @@ interface User {
   updatedAt: string;
   username: string;
 }
-interface authInitialState {
+export interface authInitialState {
   isDataAvailable: boolean;
   isLogged: boolean;
   isAdmin: boolean;
@@ -22,6 +22,7 @@ interface authInitialState {
   error: null | string | undefined;
 }
 
+// async actions
 export const signupUser = createAsyncThunk(
   "auth/signupUser",
   async (userData: signupInput) => {
@@ -38,6 +39,13 @@ export const loginUser = createAsyncThunk(
   }
 );
 
+// actions
+export const setUser = createAction("auth/setUser", (payload: User) => {
+  return {
+    payload,
+  };
+});
+
 const authSlice = createSlice({
   name: "auth",
   initialState: {
@@ -49,6 +57,14 @@ const authSlice = createSlice({
     error: null,
   } as authInitialState,
   reducers: {
+    setUser: (state, action) => {
+      state.isDataAvailable = true;
+      state.isLogged = true;
+      state.isAdmin = action.payload.is_admin;
+      state.currentUser = action.payload;
+      state.loading = false;
+      state.error = null;
+    },
     logoutUser: (state) => {
       state.isDataAvailable = false;
       state.isLogged = false;
