@@ -9,8 +9,8 @@ const DevComp = () => {
 
   const handleClick = (e:any) => {
     e.preventDefault()
+    let toDisplay = ("toDisplay")
     try {
-      let toDisplay = authState
       console.log(toDisplay)
     } catch (error: any) {
       console.error(error)

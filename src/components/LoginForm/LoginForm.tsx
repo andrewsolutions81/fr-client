@@ -33,8 +33,8 @@ const LoginForm: React.FC = () => {
   const handleSubmit = async(e: FormEvent) => {
     e.preventDefault();
     const userData = await apiLogin(loginInput);
-    console.log("userdata in loginform submit",userData)
     dispatch(setUser(userData));
+    navigate("/")
   };
 
   return (
