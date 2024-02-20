@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Homes.style.scss";
 import Loading from "../Loading/Loading";
 import HomeCard from "../HomeCard/HomeCard";
-import { fetchHomes } from "../../api/apiHomes";
+import  apiHomes  from "../../api/apiHomes";
 import { Home, HomesResponse } from "../../types";
 
 const Homes: React.FC = () => {
@@ -10,7 +10,7 @@ const Homes: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchHomes()
+    apiHomes()
       .then((data: HomesResponse) => {
         setHomesData(data);
         setLoading(false);

@@ -1,11 +1,14 @@
-import React, { MouseEventHandler, useState }from "react";
+import React, { MouseEventHandler, useState } from "react";
+import { useSelector } from "react-redux";
 import "./Header.styles.scss";
 import buildingLogo from "../../img/building_logo.png";
 import Navbar from "../NavBar/Navbar";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
-  const [isNavBarOpen, setIsNavBarOpen] = useState(false)
+  const [isNavBarOpen, setIsNavBarOpen] = useState(false);
+  const userState = useSelector((state: any) => state.auth);
+
   const navigate = useNavigate();
 
   const toggleIsNavBarOpen: MouseEventHandler<HTMLButtonElement> = () => {
@@ -13,13 +16,13 @@ const Header = () => {
   };
 
   const navigateHome = () => {
-    navigate('/');
-    setIsNavBarOpen(false)
+    navigate("/");
+    setIsNavBarOpen(false);
   };
 
   return (
     <header className="header">
-      <button className="header__burger" onClick={toggleIsNavBarOpen} >
+      <button className="header__burger" onClick={toggleIsNavBarOpen}>
         <span className="material-icons">menu</span>
       </button>
       <main className="header__brand" onClick={navigateHome}>
@@ -34,21 +37,31 @@ const Header = () => {
       <section className="header__navbar_container">
         <div className="header__ingresar">
           <span className="material-icons">account_box</span>
-          <h3 className="header__ingresar--text">Ingresar</h3>
-          <button className="header__ingresar--btn" onClick={toggleIsNavBarOpen}>
-          {
-            isNavBarOpen
-            ?<span className="material-icons" >expand_less</span>
-            :<span className="material-icons" >expand_more</span>
-          }
+          {userState.isLogged ? (
+            <h3 className="header__ingresar--text">
+              {userState.currentUser.username}
+            </h3>
+          ) : (
+            <h3 className="header__ingresar--text">Ingresar</h3>
+          )}
+          <button
+            className="header__ingresar--btn"
+            onClick={toggleIsNavBarOpen}
+          >
+            {isNavBarOpen ? (
+              <span className="material-icons">expand_less</span>
+            ) : (
+              <span className="material-icons">expand_more</span>
+            )}
           </button>
         </div>
         <div className="header__navbar">
-          {
-            isNavBarOpen
-            ?<Navbar toggleIsNavBarOpen={toggleIsNavBarOpen} setIsNavBarOpen={setIsNavBarOpen}/>
-            :null
-          }
+          {isNavBarOpen ? (
+            <Navbar
+              toggleIsNavBarOpen={toggleIsNavBarOpen}
+              setIsNavBarOpen={setIsNavBarOpen}
+            />
+          ) : null}
         </div>
       </section>
     </header>
