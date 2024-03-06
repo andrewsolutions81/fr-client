@@ -1,3 +1,4 @@
+// Whole app types.
 export interface Home {
   id: string;
   title: string;
